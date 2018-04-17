@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.FacesComponent;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import model.Pessoa;
@@ -64,4 +67,9 @@ public class PessoaController implements Serializable {
 		this.pessoas = pessoas;
 	}
 
+	
+	public void addMessage(String summary, String detail) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,summary,detail);
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
 }

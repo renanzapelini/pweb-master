@@ -11,18 +11,34 @@
 	<h:outputStylesheet library="css" name="estilos.css" />
 </h:head>
 <h:body>
-	<header class="top">
+
+	<h:form styleClass="topocuacu">
 		<h:graphicImage library="img" name="icon-siac.png" width="150" />
-	</header>
+	</h:form>
 
-	<div id="conteudo">
-		<ui:insert name="menu">
-		
+	<div id="corpo">
+		<ui:insert name="topo">
+			<h:form>
+				<p:menubar styleClass="topo topo-submenu">
+					<p:submenu label="Cadastros" icon="ui-icon-document">
+						<p:menuitem value="Alunos" url="/aluno.xhtml" styleClass="topo topo-submenu" />
+						<p:separator />
+					</p:submenu>
+
+					<p:submenu label="Consultas" icon="ui-icon-pencil">
+						<p:menuitem value="Undo" url="#"
+							icon="ui-icon-arrowreturnthick-1-w" />
+						<p:menuitem value="Redo" url="#"
+							icon="ui-icon-arrowreturnthick-1-e" />
+					</p:submenu>
+
+				</p:menubar>
+			</h:form>
 		</ui:insert>
-		<ui:insert name="conteudo">
+		<ui:insert name="fiofo">
 
 		</ui:insert>
-		
+
 	</div>
 </h:body>
 </html>
