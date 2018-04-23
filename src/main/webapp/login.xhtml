@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<ui:composition template="template/layout.xhtml"
+<ui:composition template="template/login.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -9,7 +9,7 @@
 	<ui:define name="fiofo">
 		<h:form id="formAluno">
 			<h:panelGrid columns="2" id="container">
-				<p:outputLabel value = "login" for="txtLogin"/>
+				<p:outputLabel value = "Login" for="txtLogin"/>
 				<p:inputText id="txtLogin" required="true" value="#{loginController.login}"/>
 				<p:outputLabel value = "senha" for="txtLogin"/>
 				<p:password id="txtSenha" required ="true" value="#{loginController.senha}"/>
