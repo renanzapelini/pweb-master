@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Aula PWEB</title>
+	<meta charset="UTF-8" />
+	<h:outputStylesheet library="css" name="estilos.css" />
+</h:head>
+<h:body>
+
+	<div class="login_corpo">
+
+		<ui:insert name="login">
+			<div id="suaBorda" class="login_interno">
+				<h:form id="formAluno">
+					<h:panelGrid columns="2" id="container" class="login_interno">
+						<p:outputLabel value="Login: " for="txtLogin"
+							class=" login_values_txt" />
+						<p:inputText id="txtLogin" required="true" class="btnlgn"
+							value="#{loginController.login}" />
+						<p:outputLabel value="Senha: " for="txtLogin"
+							class=" login_values_txt" />
+						<p:password id="txtSenha" required="true" class="btnlgn"
+							value="#{loginController.senha}" />
+					</h:panelGrid>
+					<p:commandButton value="Logar" action="#{loginController.logar}"
+						class="btn_logar">
+						<p:resetInput target="container" />
+					</p:commandButton>
+				</h:form>
+			</div>
+		</ui:insert>
+
+	</div>
+</h:body>
+</html>

@@ -7,8 +7,8 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 	<ui:define name="fiofo">
-		<h:form id="formAluno">
-			<p:growl autoUpdate="true" />
+		   <h:form enctype="multipart/form-data">
+			 <p:growl id="formAluno" showDetail="true" />
 			<p:panel id="panelAluno" header="Aluno">
 				<p:panelGrid columns="2">
 					<p:outputLabel value="Nome:" for="nome" />
@@ -38,6 +38,10 @@
 						update="formTableAluno formAluno" />
 				</p:panelGrid>
 			</p:panel>
+			<p:fileUpload fileUploadListener="#{alunoController.upload}" auto="false" cancelLabel="Cancelar" uploadLabel="Enviar" 
+			label="Arquivo" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" invalidFileMessage="Formato de arquivo inálido!" sizeLimit="1024000"
+			invalidSizeMessage="Tamanho acima do permitido!" sequencial = "true" fileLimit="3" fileLimitMessage="maximo 3" multiple="true"/>
+
 		</h:form>
 
 		<h:form id="formTableAluno">

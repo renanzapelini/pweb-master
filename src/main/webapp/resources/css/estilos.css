@@ -25,43 +25,49 @@
 	color: white;
 }
 
-.erro{
+.erro {
 	margin-top: 12%;
-	margin-left: 35%;	
+	margin-left: 35%;
 }
 
-
-.login_corpo{
+.login_corpo {
 	margin-left: 40%;
-	padding-left:10px;
-	padding-top:10px;
-	padding-bottom:10px;
-	margin-top:20%;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 20%;
 	margin-bottom: 0px;
 	margin-right: 43%;
-	border: 2px solid;
-	border-color: black;
+	border: 2px solid white;
 }
 
-.btn_logar{
-	margin-left:  32%;
-	margin-top:	10px;
+.btn_logar {
+	margin-left: 32%;
+	margin-top: 10px;
+	width: 30%;
 }
 
+#suaBorda {
+	
+	color: white;
+	border-radius: 5%;
+	border: 2px solid black;
+	
+}
 
-.login_interno{
-	color:white;
-
+.btnlgn{
+	width: 80%;
 }
 
 .login_values_txt {
-		margin-right:10px;
-		margin-bottom:50px;
-	}
+	margin-right: 10px;
+	margin-bottom: 50px;
+}
 
 .erro_subtitulo {
-	color: white;	
+	color: white;
 }
+
 .conteudo {
 	background-color: #3F51B5;
 	color: #9E9E9E;
