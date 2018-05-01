@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<ui:composition template="template/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="fiofo">
+		<h:form id="formCadastroAluno" enctype="multipart/form-data">
+			<p:growl autoUpdate="true" showDetail="true" />
+			<p:panel id="panelAluno" header="Aluno">
+				<p:panelGrid columns="2">
+
+
+					<p:outputLabel for="id" value="Id:" />
+					<p:inputText id="id" value="#{aluninhoController.aluninho.id}"
+						required="true" requiredMessage="Campo nota1 obrigatório">
+						<f:validateDoubleRange minimum="0" maximum="10" />
+					</p:inputText>
+
+
+					<p:outputLabel value="Nome:" for="nome" />
+					<p:inputText id="nome" value="#{aluninhoController.aluninho.nome}"
+						required="true" requiredMessage="Campo nome obrigatório" />
+
+
+
+					<p:outputLabel for="nascimento" value="Nascimento:" />
+					<p:calendar id="nascimento"
+						value="#{aluninhoController.aluninho.nascimento}" showOn="button" />
+
+
+
+					<p:outputLabel for="sexo" value="Sexo:" />
+					<p:selectOneRadio id="sexo"
+						value="#{aluninhoController.aluninho.sexo}">
+						<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+						<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+					</p:selectOneRadio>
+
+					<p:outputLabel value="Rua:" for="rua" />
+					<p:inputText id="rua" value="#{aluninhoController.aluninho.rua}"
+						required="true" requiredMessage="Campo nome obrigatório" />
+
+					<p:outputLabel value="Número:" for="numero" />
+					<p:inputText id="numero"
+						value="#{aluninhoController.aluninho.numero}" required="true"
+						requiredMessage="Campo nome obrigatório" />
+
+					<p:outputLabel value="Bairro:" for="bairro" />
+					<p:inputText id="bairro"
+						value="#{aluninhoController.aluninho.bairro}" required="true"
+						requiredMessage="Campo nome obrigatório" />
+
+					<p:outputLabel value="Cidade:" for="cidade" />
+					<p:inputText id="cidade"
+						value="#{aluninhoController.aluninho.cidade}" required="true"
+						requiredMessage="Campo nome obrigatório" />
+
+					<p:outputLabel value="UF:" for="uf" />
+					<p:inputText id="uf" value="#{aluninhoController.aluninho.uf}"
+						required="true" requiredMessage="Campo nome obrigatório" />
+
+					<p:outputLabel value="Email:" for="email" />
+					<p:inputText id="email"
+						value="#{aluninhoController.aluninho.email}" required="true"
+						requiredMessage="Campo nome obrigatório" />
+
+					<p:outputLabel value="Fone:" for="fone" />
+					<p:inputText id="fone" value="#{aluninhoController.aluninho.fone}"
+						required="true" requiredMessage="Campo nome obrigatório" />
+
+					<p:commandButton value="Salvar"
+						actionListener="#{aluninhoController.salvar}"
+						update="formCadastroAluno formTableAluno" />
+				</p:panelGrid>
+			</p:panel>
+		</h:form>
+
+		<h:form id="formTableAluno">
+
+			<p:dataTable id="aluno" value="#{aluninhoController.alunos}" var="aluno"
+				emptyMessage="Foram encontrados 0 registros" reflow="true"
+				paginator="true" rows="10">
+
+				<p:column headerText="Nome" sortBy="#{aluninho.nome}">
+					<p:outputLabel value="#{aluno.nome}" />
+				</p:column>
+
+				<p:column headerText="Media" sortBy="#{aluninho.media}">
+					<p:outputLabel value="#{aluno.media}">
+						<f:convertNumber maxFractionDigits="2" />
+					</p:outputLabel>
+				</p:column>
+
+				<p:column headerText="Situação" sortBy="#{aluninho.situacao}">
+					<p:outputLabel value="#{aluno.situacao}" />
+				</p:column>
+
+				<p:column headerText="Ações" exportable="false">
+
+					<p:commandButton icon="ui-icon-trash"
+						actionListener="#{alunoController.editar}"
+						update="formCadastroAluno">
+						<f:attribute name="alunoSelecionado" value="#{aluno}" />
+					</p:commandButton>
+
+					<p:commandButton icon="ui-icon-pencil"
+						actionListener="#{alunoController.excluir}"
+						update="formTableAluno formCadastroAluno">
+
+						<p:confirm header="Confirmação" message="Excluir Aluno?"
+							icon="ui-icon-alert" />
+						<f:attribute name="alunoExcluido" value="#{aluno}" />
+					</p:commandButton>
+
+				</p:column>
+
+				<f:facet name="footer">
+					<p:outputLabel
+						value="Foram encontrados #{alunoController.alunos.size()} registros." />
+				</f:facet>
+			</p:dataTable>
+
+			<p:commandButton ajax="false" immediate="true" value="XLS">
+				<p:dataExporter type="XLS" target="aluno" fileName="pessoas"></p:dataExporter>
+			</p:commandButton>
+
+			<p:commandButton ajax="false" immediate="true" value="PDF">
+				<p:dataExporter type="PDF" target="aluno" fileName="pessoas"></p:dataExporter>
+			</p:commandButton>
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</h:form>
+	</ui:define>
+</ui:composition>
